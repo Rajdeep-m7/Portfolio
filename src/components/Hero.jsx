@@ -12,15 +12,15 @@ function Hero() {
           </p>
         </div>
 
-        <h1 className="text-white font-extrabold text-3xl sm:text-5xl md:text-6xl lg:text-7xl mt-5 leading-tight">
+        <h1 className="text-white font-extrabold text-6xl lg:text-7xl mt-5 leading-tight">
           FULL STACK
         </h1>
 
-        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold bg-linear-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent leading-tight">
+        <h1 className="text-6xl lg:text-7xl font-extrabold bg-linear-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent leading-tight">
           DEVELOPER
         </h1>
 
-        <p className="text-gray-400 mt-5 max-w-xl text-sm sm:text-base">
+        <p className="text-gray-400 mt-5 max-w-xl">
           BCA 3rd Year <span className="font-bold">@ SIT Siliguri</span>.
           Crafting production-grade web apps with{" "}
           <span className="text-violet-500 font-bold">MERN</span>, PostgreSQL,
@@ -69,7 +69,7 @@ function Hero() {
             </div>
           ))}
         </div>
-        <div className="w-full max-w-lg sm:max-w-xl md:max-w-2xl bg-[#0d1117] text-green-400 font-mono rounded-2xl shadow-2xl border border-gray-700 overflow-hidden">
+        <div className="w-full max-w-lg sm:max-w-xl md:max-w-3xl bg-[#0d1117] text-green-400 font-mono rounded-2xl shadow-2xl border border-gray-700 overflow-hidden">
           <div className="flex flex-wrap items-center justify-between gap-2 px-4 py-2 sm:px-5 sm:py-3 bg-gray-800">
             <div className="flex items-center gap-2 flex-wrap">
               <span className="w-3 h-3 bg-red-500 rounded-full"></span>

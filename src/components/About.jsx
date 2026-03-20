@@ -2,11 +2,11 @@ import React from "react";
 
 function About() {
   return (
-    <div className="bg-slate-950 h-fit p-4 lg:p-20">
+    <div className="bg-slate-950 h-fit p-4 md:p-20">
       <div className="flex flex-col gap-10 lg:justify-between lg:flex-row">
         <div className="lg:w-2/5">
           <div>
-            <h1 className="text-6xl font-extrabold text-white">
+            <h1 className="text-6xl lg:text-7xl font-extrabold text-white">
               Who I <span className="text-violet-900">am</span>
             </h1>
             <p className="text-gray-400 text-xl mt-10">
