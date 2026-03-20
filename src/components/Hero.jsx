@@ -3,10 +3,9 @@ import { RiArrowRightUpLongLine } from "react-icons/ri";
 
 function Hero() {
   return (
-    <div className="bg-slate-950 min-h-screen px-4 py-10 sm:px-6 md:px-10 lg:px-20 flex flex-col lg:flex-row items-center justify-between gap-12">
-      
+    <div className="bg-gray-950 min-h-screen px-4 py-10 sm:px-6 md:px-10 lg:px-20 flex flex-col lg:flex-row items-center justify-between gap-12">
       <div className="w-full lg:w-1/2">
-        <div className="px-4 py-2 rounded-2xl flex bg-gray-900 w-fit items-center gap-3 border border-blue-950">
+        <div className="px-2 p-1 rounded-2xl flex bg-gray-900 w-fit items-center gap-3 border border-blue-950 hover:scale-105">
           <span className="bg-green-400 rounded-full w-2.5 h-2.5 animate-pulse"></span>
           <p className="text-gray-400 font-semibold text-xs sm:text-sm md:text-base">
             Available for Work
@@ -48,9 +47,29 @@ function Hero() {
         </div>
       </div>
 
-      <div className="w-full lg:w-1/2 flex justify-center">
+      <div className="w-full lg:w-3/7 flex flex-col justify-center">
+        <div className="flex gap-5 mb-5 flex-wrap text-sm justify-center">
+          {[
+            "React",
+            "Node.js",
+            "Express.js",
+            "MongoDB",
+            "PostgreSQL",
+            "Redux",
+            "JavaScript",
+            "zustand",
+            "Socket.io",
+          ].map((tech, i) => (
+            <div
+              key={i}
+              className="px-2 p-1 border rounded-md text-gray-400 float hover:scale-105 cursor-pointer"
+              style={{ animationDelay: `${i * 0.1}s` }}
+            >
+              {tech}
+            </div>
+          ))}
+        </div>
         <div className="w-full max-w-lg sm:max-w-xl md:max-w-2xl bg-[#0d1117] text-green-400 font-mono rounded-2xl shadow-2xl border border-gray-700 overflow-hidden">
-          
           <div className="flex flex-wrap items-center justify-between gap-2 px-4 py-2 sm:px-5 sm:py-3 bg-gray-800">
             <div className="flex items-center gap-2 flex-wrap">
               <span className="w-3 h-3 bg-red-500 rounded-full"></span>
@@ -74,16 +93,24 @@ function Hero() {
           </div>
 
           <div className="p-4 sm:p-6 space-y-3 sm:space-y-4 text-sm sm:text-base leading-relaxed word-break-words">
-            <p><span className="text-blue-400">~/dev $</span> whoami</p>
+            <p>
+              <span className="text-blue-400">~/dev $</span> whoami
+            </p>
             <p>Rajdeep Majumdar — Full-Stack MERN Developer</p>
 
-            <p><span className="text-blue-400">~/dev $</span> cat skills.txt</p>
+            <p>
+              <span className="text-blue-400">~/dev $</span> cat skills.txt
+            </p>
             <p>React.js · Express.js · MongoDB · Node.js · PostgreSQL</p>
 
-            <p><span className="text-blue-400">~/dev $</span> cat education.txt</p>
+            <p>
+              <span className="text-blue-400">~/dev $</span> cat education.txt
+            </p>
             <p>BCA 3rd Year · SIT Siliguri · CGPA 8.77</p>
 
-            <p><span className="text-blue-400">~/dev $</span> cat status.txt</p>
+            <p>
+              <span className="text-blue-400">~/dev $</span> cat status.txt
+            </p>
             <p className="flex items-center gap-2 flex-wrap">
               <span className="text-green-400">●</span>
               Open to internships & opportunities
@@ -96,7 +123,6 @@ function Hero() {
           </div>
         </div>
       </div>
-
     </div>
   );
 }
