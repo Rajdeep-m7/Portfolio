@@ -2,12 +2,12 @@ import React from "react";
 
 function About() {
   return (
-    <div className="bg-slate-950 h-fit p-4 md:p-20">
+    <div id="about" className="bg-slate-950 h-fit p-4 md:p-20">
       <div className="flex flex-col gap-10 lg:justify-between lg:flex-row">
         <div className="lg:w-2/5">
           <div>
-            <h1 className="text-6xl lg:text-7xl font-extrabold text-white">
-              Who I <span className="text-violet-900">am</span>
+            <h1 className="text-4xl md:text-7xl font-extrabold text-white">
+              Who I <span className="text-cyan-400">am</span>
             </h1>
             <p className="text-gray-400 text-xl mt-10">
               I'm a{" "}
@@ -90,7 +90,7 @@ function About() {
             </div>
           </div>
 
-          <div className="border border-blue-950 p-5 rounded-xl border-l-4 border-l-cyan-400 w-full hover:bg-gray-950 hover:scale-101 ">
+          <div className="border border-blue-950 p-5 rounded-xl border-l-4 border-l-cyan-400 w-full hover:bg-gray-950 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/30 hover:scale-101 ">
             <div className="flex gap-5  items-center">
               <p className="text-3xl">🏆</p>
               <div>
@@ -102,7 +102,7 @@ function About() {
               </div>
             </div>
           </div>
-          <div className="border border-blue-950 p-5 rounded-xl border-l-4 border-l-cyan-400 w-full hover:bg-gray-950 hover:scale-101 ">
+          <div className="border border-blue-950 p-5 rounded-xl border-l-4 border-l-cyan-400 w-full hover:bg-gray-950 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/30 hover:scale-101 ">
             <div className="flex gap-5  items-center">
               <p className="text-3xl">🥈</p>
               <div>

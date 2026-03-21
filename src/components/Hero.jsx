@@ -3,7 +3,7 @@ import { RiArrowRightUpLongLine } from "react-icons/ri";
 
 function Hero() {
   return (
-    <div className="bg-gray-950 min-h-screen px-4 py-10 sm:px-6 md:px-10 lg:px-20 flex flex-col lg:flex-row items-center justify-between gap-12">
+    <div id="home" className="bg-gray-950 min-h-screen px-4 py-10 sm:px-6 md:px-10 lg:px-20 flex flex-col lg:flex-row items-center justify-between gap-12">
       <div className="w-full lg:w-1/2">
         <div className="px-2 p-1 rounded-2xl flex bg-gray-900 w-fit items-center gap-3 border border-blue-950 hover:scale-105">
           <span className="bg-green-400 rounded-full w-2.5 h-2.5 animate-pulse"></span>
@@ -27,9 +27,9 @@ function Hero() {
           Redux & modern tooling.
         </p>
 
-        <button className="px-5 sm:px-6 mt-8 py-3 sm:py-4 flex gap-2 items-center bg-linear-to-r from-blue-500 to-cyan-500 text-white font-bold rounded-md text-sm sm:text-base w-fit">
+        <a href="#projects" className="px-5 sm:px-6 mt-8 py-3 sm:py-4 flex gap-2 items-center bg-linear-to-r from-blue-500 to-cyan-500 text-white font-bold rounded-md text-sm sm:text-base w-fit">
           View Projects <RiArrowRightUpLongLine />
-        </button>
+        </a>
 
         <div className="rounded-md bg-slate-900 flex flex-wrap border border-blue-950 text-white font-bold mt-10 w-full sm:w-fit">
           <div className="flex-1 sm:flex-none text-center hover:bg-slate-800 border-r border-blue-950 px-6 py-4 sm:px-10 sm:py-5">

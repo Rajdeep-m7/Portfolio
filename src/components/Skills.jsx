@@ -34,9 +34,9 @@ const skillsData = [
 
 function Skills() {
   return (
-    <section className="bg-gray-950 px-6 py-12 lg:px-20 lg:py-20">
+    <section id="skills" className="bg-gray-950 px-6 py-12 lg:px-20 lg:py-20">
       
-      <h1 className="text-6xl  lg:text-7xl font-extrabold text-white mb-12">
+      <h1 className="text-4xl  md:text-7xl font-extrabold text-white mb-12">
         Tech I{" "}
         <span className="bg-linear-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">
           work with
