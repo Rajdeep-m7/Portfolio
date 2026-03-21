@@ -1,10 +1,19 @@
 import React from "react";
 import { RiArrowRightUpLongLine } from "react-icons/ri";
+import { motion } from "framer-motion";
 
 function Hero() {
   return (
-    <div id="home" className="bg-gray-950 min-h-screen px-4 py-10 sm:px-6 md:px-10 lg:px-20 flex flex-col lg:flex-row items-center justify-between gap-12">
-      <div className="w-full lg:w-1/2">
+    <div
+      id="home"
+      className="bg-gray-950 min-h-screen px-4 py-10 sm:px-6 md:px-10 lg:px-20 flex flex-col lg:flex-row items-center justify-between gap-12"
+    >
+      <motion.div
+        initial={{ opacity: 0, x: -100 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.3, delay: 0.2 }}
+        className="w-full lg:w-1/2"
+      >
         <div className="px-2 p-1 rounded-2xl flex bg-gray-900 w-fit items-center gap-3 border border-blue-950 hover:scale-105">
           <span className="bg-green-400 rounded-full w-2.5 h-2.5 animate-pulse"></span>
           <p className="text-gray-400 font-semibold text-xs sm:text-sm md:text-base">
@@ -12,26 +21,52 @@ function Hero() {
           </p>
         </div>
 
-        <h1 className="text-white font-extrabold text-6xl lg:text-7xl mt-5 leading-tight">
+        <motion.h1
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="text-white font-extrabold text-6xl lg:text-7xl mt-5 leading-tight"
+        >
           FULL STACK
-        </h1>
+        </motion.h1>
 
-        <h1 className="text-6xl lg:text-7xl font-extrabold bg-linear-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent leading-tight">
+        <motion.h1
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="text-6xl lg:text-7xl font-extrabold bg-linear-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent leading-tight"
+        >
           DEVELOPER
-        </h1>
+        </motion.h1>
 
-        <p className="text-gray-400 mt-5 max-w-xl">
+        <motion.p
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="text-gray-400 mt-5 max-w-xl"
+        >
           BCA 3rd Year <span className="font-bold">@ SIT Siliguri</span>.
           Crafting production-grade web apps with{" "}
           <span className="text-violet-500 font-bold">MERN</span>, PostgreSQL,
           Redux & modern tooling.
-        </p>
+        </motion.p>
 
-        <a href="#projects" className="px-5 sm:px-6 mt-8 py-3 sm:py-4 flex gap-2 items-center bg-linear-to-r from-blue-500 to-cyan-500 text-white font-bold rounded-md text-sm sm:text-base w-fit">
+        <motion.a
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          href="#projects"
+          className="px-5 sm:px-6 mt-8 py-3 sm:py-4 flex gap-2 items-center bg-linear-to-r from-blue-500 to-cyan-500 text-white font-bold rounded-md text-sm sm:text-base w-fit"
+        >
           View Projects <RiArrowRightUpLongLine />
-        </a>
+        </motion.a>
 
-        <div className="rounded-md bg-slate-900 flex flex-wrap border border-blue-950 text-white font-bold mt-10 w-full sm:w-fit">
+        <motion.div
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.65 }}
+          className="rounded-md bg-slate-900 flex flex-wrap border border-blue-950 text-white font-bold mt-10 w-full sm:w-fit"
+        >
           <div className="flex-1 sm:flex-none text-center hover:bg-slate-800 border-r border-blue-950 px-6 py-4 sm:px-10 sm:py-5">
             <h1 className="text-lg sm:text-xl">8.77</h1>
             <p className="text-xs sm:text-sm">CGPA</p>
@@ -44,10 +79,16 @@ function Hero() {
             <h1 className="text-lg sm:text-xl">2</h1>
             <p className="text-xs sm:text-sm">Awards</p>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
-      <div className="w-full lg:w-3/7 flex flex-col justify-center">
+      <motion.div
+        initial={{ opacity: 0, x: 100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        viewport= {{once:true}}
+        className="w-full lg:w-3/7 flex flex-col justify-center"
+      >
         <div className="flex gap-5 mb-5 flex-wrap text-sm justify-center">
           {[
             "React",
@@ -60,13 +101,17 @@ function Hero() {
             "zustand",
             "Socket.io",
           ].map((tech, i) => (
-            <div
+            <motion.div
+              initial={{ opacity: 0, y: -100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 * i + 0.4 }}
+              viewport= {{once:true}}
               key={i}
               className="px-2 p-1 border rounded-md text-gray-400 float hover:scale-105 cursor-pointer"
               style={{ animationDelay: `${i * 0.1}s` }}
             >
               {tech}
-            </div>
+            </motion.div>
           ))}
         </div>
         <div className="w-full max-w-lg sm:max-w-xl md:max-w-3xl bg-[#0d1117] text-green-400 font-mono rounded-2xl shadow-2xl border border-gray-700 overflow-hidden">
@@ -92,7 +137,13 @@ function Hero() {
             </div>
           </div>
 
-          <div className="p-4 sm:p-6 space-y-3 sm:space-y-4 text-sm sm:text-base leading-relaxed word-break-words">
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            viewport= {{once:true}}
+            className="p-4 sm:p-6 space-y-3 sm:space-y-4 text-sm sm:text-base leading-relaxed word-break-words"
+          >
             <p>
               <span className="text-blue-400">~/dev $</span> whoami
             </p>
@@ -120,9 +171,9 @@ function Hero() {
               ~/dev $
               <span className="animate-pulse inline-block w-2 h-5 bg-green-500 ml-1"></span>
             </p>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

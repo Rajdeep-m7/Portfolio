@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 function About() {
   return (
@@ -6,18 +7,36 @@ function About() {
       <div className="flex flex-col gap-10 lg:justify-between lg:flex-row">
         <div className="lg:w-2/5">
           <div>
-            <h1 className="text-4xl md:text-7xl font-extrabold text-white">
+            <motion.h1
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-7xl font-extrabold text-white"
+            >
               Who I <span className="text-cyan-400">am</span>
-            </h1>
-            <p className="text-gray-400 text-xl mt-10">
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="text-gray-400 text-xl mt-10"
+            >
               I'm a{" "}
               <span className="font-bold text-white">BCA 3rd Year student</span>{" "}
               at Siliguri Institute of Technology with a CGPA of{" "}
               <span className="text-violet-400 font-bold">8.77</span>. I'm
               passionate about building fast, scalable, and beautiful web
               applications.
-            </p>
-            <p className="text-gray-400 text-xl mt-5">
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              viewport={{ once: true }}
+              className="text-gray-400 text-xl mt-5"
+            >
               My core stack includes{" "}
               <span className="font-bold text-white">
                 React, Node.js, Express, MongoDB,
@@ -26,9 +45,15 @@ function About() {
               always exploring new technologies and pushing myself to write
               better, more efficient code. For me, development is not just about
               functionality — it’s about crafting smooth user experiences.
-            </p>
+            </motion.p>
           </div>
-          <div className="mt-5">
+          <motion.div
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            viewport={{ once: true }}
+            className="mt-5"
+          >
             <div className="flex justify-between border-b border-gray-900 text-gray-400 p-2 hover:bg-slate-900">
               <h1 className="text-sm">ROLE</h1>
               <h1 className="text-sm font-semibold text-white">
@@ -65,11 +90,17 @@ function About() {
                 ● Open to Opportunities
               </h1>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         <div className="lg:max-w-1/2 text-gray-400 flex flex-col w-full justify-center items-center gap-5">
-          <div className="border border-blue-950 p-5 rounded-xl w-full">
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="border border-blue-950 p-5 rounded-xl w-full"
+          >
             <div className="flex justify-between">
               <div>
                 <p className="text-white mb-1">Academic Performance</p>
@@ -88,31 +119,69 @@ function About() {
               <p>0</p>
               <p>10</p>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="border border-blue-950 p-5 rounded-xl border-l-4 border-l-cyan-400 w-full hover:bg-gray-950 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/30 hover:scale-101 ">
-            <div className="flex gap-5  items-center">
+          <motion.div
+            initial={{ opacity: 0, x: 80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            whileHover={{
+              scale: 1.03,
+              y: -6,
+              transition: {
+                delay: 0.1,
+                type: "spring",
+              },
+            }}
+            transition={{
+              duration: 0.4,
+              delay: 0.5,
+              ease: "easeOut",
+            }}
+            className="border border-blue-950 p-5 rounded-xl border-l-4 border-l-cyan-400 w-full 
+             hover:bg-gray-950
+             hover:shadow-lg hover:shadow-cyan-400/40 "
+          >
+            <div className="flex gap-5 items-center">
               <p className="text-3xl">🏆</p>
               <div>
-                <p className="font-bold text-white"> 3rd Semester Topper</p>
+                <p className="font-bold text-white">3rd Semester Topper</p>
                 <p>
                   Ranked #1 in the 3rd Semester at Siliguri Institute of
                   Technology.
                 </p>
               </div>
             </div>
-          </div>
-          <div className="border border-blue-950 p-5 rounded-xl border-l-4 border-l-cyan-400 w-full hover:bg-gray-950 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/30 hover:scale-101 ">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            whileHover={{
+              scale: 1.03,
+              y: -6,
+              transition: {
+                delay: 0.1,
+                type: "spring",
+                stiffness: 300,
+                damping: 20,
+              },
+            }}
+            transition={{
+              duration: 0.4,
+              delay: 0.6,
+              ease: "easeOut",
+            }}
+            className="border border-blue-950 p-5 rounded-xl border-l-4 border-l-cyan-400 w-full hover:bg-gray-950 hover:shadow-lg  hover:shadow-cyan-500/30 "
+          >
             <div className="flex gap-5  items-center">
               <p className="text-3xl">🥈</p>
               <div>
                 <p className="font-bold text-white">SIH Hackathon Runner-up</p>
-                <p>
-                  2nd place in SIT Internal Smart India Hackathon 2025.
-                </p>
+                <p>2nd place in SIT Internal Smart India Hackathon 2025.</p>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

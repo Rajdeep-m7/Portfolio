@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const CONTACT_LINKS = [
   {
@@ -26,29 +27,58 @@ const CONTACT_LINKS = [
 
 function Contact() {
   return (
-    <section id="contact" className="bg-slate-950 text-white px-4 py-16 md:px-10 lg:px-20">
-      
-      <h2 className="text-4xl md:text-7xl font-extrabold leading-tight">
+    <section
+      id="contact"
+      className="bg-slate-950 text-white px-4 py-16 md:px-10 lg:px-20"
+    >
+      <motion.h2
+        initial={{ opacity: 0, x: -100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        viewport={{ once: true }}
+        className="text-4xl md:text-7xl font-extrabold leading-tight"
+      >
         Let's build something <br />
         <span className="bg-linear-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">
           great together.
         </span>
-      </h2>
+      </motion.h2>
 
-      <p className="text-gray-400 mt-4 max-w-xl">
+      <motion.p
+        initial={{ opacity: 0, x: -100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        viewport={{ once: true }}
+        className="text-gray-400 mt-4 max-w-xl"
+      >
         Open to internships, freelance projects, and collaborations.
-      </p>
+      </motion.p>
 
       <div className="flex flex-col gap-4 mt-10">
         {CONTACT_LINKS.map((c, i) => (
-          <a
+          <motion.a
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            whileHover={{
+              scale: 1.01,
+              transition: {
+                delay: 0.1,
+                type: "spring",
+                stiffness: 300,
+                damping: 20,
+              },
+            }}
+            transition={{
+              duration: 0.5,
+              delay: 0.1*i + 0.4,
+            }}
+            viewport={{ once: true }}
             key={i}
             href={c.href}
             target="_blank"
             rel="noreferrer"
             className="flex items-center justify-between p-5 rounded-xl bg-slate-900 border border-gray-700 
-            hover:border-cyan-400 hover:translate-x-2 hover:shadow-lg hover:shadow-cyan-500/20 
-            transition-all duration-300"
+            hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/20 "
           >
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-slate-800 text-xl">
@@ -63,16 +93,33 @@ function Contact() {
             </div>
 
             <span className="text-gray-400 text-lg">↗</span>
-          </a>
+          </motion.a>
         ))}
       </div>
 
-      <div className="mt-12 p-6 rounded-xl bg-slate-900 border border-gray-700 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        
+      <motion.div
+        initial={{ opacity: 0, x: -100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        whileHover={{
+          scale: 1.01,
+          transition: {
+            delay: 0.1,
+            type: "spring",
+            stiffness: 300,
+            damping: 20,
+          },
+        }}
+        transition={{
+          duration: 0.5,
+          delay: 0.5,
+        }}
+        className="mt-12 p-6 rounded-xl bg-slate-900 border border-gray-700 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
+      >
         <div>
           <h3 className="font-bold text-lg">Currently open to opportunities</h3>
           <p className="text-sm text-gray-400">
-            <span className="text-green-500 animate-ping text-xl">●</span> Available for internships · Freelance · Full-time
+            <span className="text-green-500 animate-ping text-xl">●</span>{" "}
+            Available for internships · Freelance · Full-time
           </p>
         </div>
 
@@ -93,7 +140,7 @@ function Contact() {
             LinkedIn
           </a>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

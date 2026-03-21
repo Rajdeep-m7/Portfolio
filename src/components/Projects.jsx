@@ -1,6 +1,7 @@
 import React from "react";
 import { RiArrowRightUpLongLine } from "react-icons/ri";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { motion } from "framer-motion";
 
 const ProjectData = [
   {
@@ -38,24 +39,45 @@ const ProjectData = [
 function Projects() {
   return (
     <div id="projects" className="bg-slate-950 px-4 py-10 md:px-10 lg:px-20">
-      <h1 className="text-white text-4xl md:text-7xl font-extrabold leading-tight">
+      <motion.h1
+        initial={{ opacity: 0, x: -100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        viewport={{ once: true }}
+        className="text-white text-4xl md:text-7xl font-extrabold leading-tight"
+      >
         Projects I've{" "}
         <span className="bg-linear-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">
           built
         </span>
-      </h1>
+      </motion.h1>
 
       <div className="grid gap-6 mt-10 sm:grid-cols-2 lg:grid-cols-3 ">
         {ProjectData.map((item, i) => (
-          <div
+          <motion.div
+            initial={{ opacity: 0, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            whileHover={{scale:1.03 , y: -5,
+              transition:{
+                delay: 0.2,
+                type: "spring",
+                stiffness: 300,
+                damping: 20,
+              },
+            }}
+            transition={{ duration: 0.5, delay: 0.1*i + 0.3 }}
+            viewport={{ once: true }}
             key={i}
             className="flex flex-col justify-between border border-gray-700 p-5 rounded-xl text-white bg-slate-900 
-  transition-all duration-300 
-  hover:scale-[1.03] 
   hover:border-t-4 hover:border-t-cyan-400 
   hover:shadow-lg hover:shadow-cyan-500/30"
           >
-            <div>
+            <motion.div
+            initial={{opacity:0 , y: -80}}
+            whileInView={{opacity:1 , y:0}}
+            transition={{ duration:0.7 , delay:0.2}}
+            viewport={{once : true}}
+            >
               <div className="flex justify-between items-center mb-3">
                 <span className="text-4xl">{item.emoji}</span>
                 <span className="text-xs bg-slate-800 px-2 py-1 border border-blue-950 rounded-md text-gray-300">
@@ -76,9 +98,14 @@ function Projects() {
                   </span>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
-            <div className="flex gap-4 mt-6">
+            <motion.div 
+            initial={{opacity:0 , y: -80}}
+            whileInView={{opacity:1 , y:0}}
+            transition={{ duration:0.7 , delay:0.2}}
+            viewport={{once : true}}
+            className="flex gap-4 mt-6">
               <a
                 href={item.github}
                 target="_blank"
@@ -95,8 +122,8 @@ function Projects() {
               >
                 Live Demo <FaArrowRightLong />
               </a>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         ))}
       </div>
     </div>
