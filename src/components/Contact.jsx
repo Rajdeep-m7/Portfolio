@@ -26,6 +26,7 @@ const CONTACT_LINKS = [
 ];
 
 function Contact() {
+  const isMobile = window.innerWidth < 768 ;
   return (
     <section
       id="contact"
@@ -70,7 +71,7 @@ function Contact() {
             }}
             transition={{
               duration: 0.5,
-              delay: 0.1*i + 0.4,
+              delay: 0.1*i + 0.3,
             }}
             viewport={{ once: true }}
             key={i}
@@ -111,7 +112,7 @@ function Contact() {
         }}
         transition={{
           duration: 0.5,
-          delay: 0.5,
+          delay: isMobile ? 0.2 : 0.5,
         }}
         className="mt-12 p-6 rounded-xl bg-slate-900 border border-gray-700 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
       >

@@ -64,7 +64,7 @@ function Skills() {
                 damping: 20,
               },
             }}
-            transition={{ duration: 0.5, delay: 0.05 * index + 0.3 }}
+            transition={{ duration: 0.5, delay: 0.01 * index + 0.3 }}
             viewport={{ once: true }}
             key={index}
             className="p-5 rounded-2xl bg-slate-950 border border-slate-800 hover:border-slate-600  hover:shadow-xl"
@@ -87,7 +87,7 @@ function Skills() {
                 <motion.li
                   initial={{ opacity: 0, y: -100 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1*i + 0.1 }}
+                  transition={{ duration: 0.4, delay: 0.1*i + 0.1 }}
                   viewport={{ once: true }}
                   key={i}
                   className="px-3 py-2 rounded-md hover:bg-slate-900"

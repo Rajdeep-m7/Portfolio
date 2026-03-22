@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 function About() {
+  const IsMobile = window.innerWidth < 768 ;
   return (
     <div id="about" className="bg-slate-950 h-fit p-4 md:p-20">
       <div className="flex flex-col gap-10 lg:justify-between lg:flex-row">
@@ -95,7 +96,7 @@ function About() {
 
         <div className="lg:max-w-1/2 text-gray-400 flex flex-col w-full justify-center items-center gap-5">
           <motion.div
-            initial={{ opacity: 0, x: 100 }}
+            initial={{ opacity: 0, x: IsMobile? -100 : 100 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             viewport={{ once: true }}
@@ -122,7 +123,7 @@ function About() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 80 }}
+            initial={{ opacity: 0, x: IsMobile ? -80 : 80 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             whileHover={{
@@ -154,7 +155,7 @@ function About() {
             </div>
           </motion.div>
           <motion.div
-            initial={{ opacity: 0, x: 80 }}
+            initial={{ opacity: 0, x: IsMobile? -80 : 80 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             whileHover={{
@@ -169,7 +170,7 @@ function About() {
             }}
             transition={{
               duration: 0.4,
-              delay: 0.6,
+              delay: IsMobile ? 0.5 : 0.6,
               ease: "easeOut",
             }}
             className="border border-blue-950 p-5 rounded-xl border-l-4 border-l-cyan-400 w-full hover:bg-gray-950 hover:shadow-lg  hover:shadow-cyan-500/30 "

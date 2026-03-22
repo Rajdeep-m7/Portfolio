@@ -4,6 +4,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { motion } from "framer-motion";
 
 const ProjectData = [
+ 
   {
     emoji: "🛒",
     badge: "MERN",
@@ -37,6 +38,7 @@ const ProjectData = [
 ];
 
 function Projects() {
+   const isMobile = window.innerWidth < 768 ;
   return (
     <div id="projects" className="bg-slate-950 px-4 py-10 md:px-10 lg:px-20">
       <motion.h1
@@ -65,7 +67,7 @@ function Projects() {
                 damping: 20,
               },
             }}
-            transition={{ duration: 0.5, delay: 0.1*i + 0.3 }}
+            transition={{ duration: 0.5, delay: isMobile? 0.3 : 0.1*i + 0.3 }}
             viewport={{ once: true }}
             key={i}
             className="flex flex-col justify-between border border-gray-700 p-5 rounded-xl text-white bg-slate-900 

@@ -3,6 +3,7 @@ import { RiArrowRightUpLongLine } from "react-icons/ri";
 import { motion } from "framer-motion";
 
 function Hero() {
+  const isMobile = window.innerWidth < 768;
   return (
     <div
       id="home"
@@ -83,7 +84,7 @@ function Hero() {
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, x: 100 }}
+        initial={{ opacity: 0, x: isMobile ? -100 : 100 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
         viewport= {{once:true}}
@@ -102,12 +103,12 @@ function Hero() {
             "Socket.io",
           ].map((tech, i) => (
             <motion.div
-              initial={{ opacity: 0, y: -100 }}
+              initial={{ opacity: 0, y: isMobile? 100 : -100 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 * i + 0.4 }}
               viewport= {{once:true}}
               key={i}
-              className="px-2 p-1 border rounded-md text-gray-400 float hover:scale-105 cursor-pointer"
+              className="px-2 p-1 border rounded-md text-gray-400 float hover:scale-105 "
               style={{ animationDelay: `${i * 0.1}s` }}
             >
               {tech}
@@ -138,8 +139,8 @@ function Hero() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: isMobile? -100 : 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
             viewport= {{once:true}}
             className="p-4 sm:p-6 space-y-3 sm:space-y-4 text-sm sm:text-base leading-relaxed word-break-words"
