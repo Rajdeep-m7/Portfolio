@@ -1,106 +1,67 @@
-import React from "react";
-import { motion } from "framer-motion";
+import { skills } from "@/data/portfolio";
+import Chip from "./Chip";
+import Icon from "./Icon";
+import SectionLabel from "./SectionLabel";
 
-const skillsData = [
-  {
-    title: "FRONTEND",
-    color: "bg-cyan-500",
-    items: [
-      "React",
-      "HTML5",
-      "CSS",
-      "Tailwind CSS",
-      "JavaScript ES6+",
-      "Framer Motion",
-      "Redux Toolkit",
-      "Zustand",
-    ],
-  },
-  {
-    title: "BACKEND",
-    color: "bg-violet-500",
-    items: ["Node.js", "Express.js", "Socket.io", "JWT Auth", "REST APIs"],
-  },
-  {
-    title: "DATABASE",
-    color: "bg-green-500",
-    items: ["MongoDB", "PostgreSQL", "Mongoose ODM"],
-  },
-  {
-    title: "OTHERS",
-    color: "bg-amber-500",
-    items: ["Core Java", "GitHub", "Git", "Postman", "VS Code"],
-  },
-];
+export default function Skills() {
+  // Wide cards (DevOps) always close the grid so the rows stay even.
+  const domains = [
+    ...skills.domains.filter((d) => !d.wide),
+    ...skills.domains.filter((d) => d.wide),
+  ];
 
-function Skills() {
   return (
-    <section id="skills" className="bg-gray-950 px-6 py-12 lg:px-20 lg:py-20">
-      <motion.h1
-        initial={{ opacity: 0, x: -100 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        viewport={{ once: true }}
-        className="text-4xl  md:text-7xl font-extrabold text-white mb-12"
-      >
-        Tech I{" "}
-        <span className="bg-linear-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">
-          work with
-        </span>
-      </motion.h1>
-
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {skillsData.map((section, index) => (
-          <motion.div
-            initial={{ opacity: 0, x: -100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            whileHover={{
-              scale: 1.03,
-              y: -6,
-              transition: {
-                delay: 0.1,
-                type: "spring",
-                stiffness: 300,
-                damping: 20,
-              },
-            }}
-            transition={{ duration: 0.5, delay: 0.01 * index + 0.3 }}
-            viewport={{ once: true }}
-            key={index}
-            className="p-5 rounded-2xl bg-slate-950 border border-slate-800 hover:border-slate-600  hover:shadow-xl"
-          >
-            <motion.div
-              initial={{ opacity: 0, x: -100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="flex items-center gap-3 mb-4"
-            >
-              <div className={`w-8 h-1 rounded ${section.color}`}></div>
-              <p className="text-gray-400 text-sm tracking-wider">
-                {section.title}
-              </p>
-            </motion.div>
-
-            <ul className="text-gray-300 text-sm font-medium space-y-1">
-              {section.items.map((skill, i) => (
-                <motion.li
-                  initial={{ opacity: 0, y: -100 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.1*i + 0.1 }}
-                  viewport={{ once: true }}
-                  key={i}
-                  className="px-3 py-2 rounded-md hover:bg-slate-900"
-                >
-                  ● {skill}
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-        ))}
+    <section
+      id="skills"
+      aria-labelledby="skills-heading"
+      className="w-full max-w-7xl mx-auto px-6 lg:px-12 py-16 md:py-24"
+    >
+      <div className="reveal">
+        <SectionLabel>04 — Toolkit</SectionLabel>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+          <div>
+            <h2 id="skills-heading" className="font-display text-headline-md text-on-surface">
+              {skills.heading}
+            </h2>
+            <p className="text-body-md text-secondary mt-1">{skills.intro}</p>
+          </div>
+          <span className="font-label-mono text-label-mono text-secondary shrink-0">
+            [ {domains.length} Core Domains ]
+          </span>
+        </div>
       </div>
+
+      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {domains.map((domain) => (
+          <li
+            key={domain.title}
+            className={`reveal lift p-6 rounded-xl bg-surface-container-low border border-outline-variant flex flex-col justify-between hover:border-primary ${
+              domain.wide ? "md:col-span-2 lg:col-span-3" : ""
+            }`}
+          >
+            <div className={domain.wide ? "lg:grid lg:grid-cols-12 lg:gap-10 lg:items-center" : ""}>
+              <div className={domain.wide ? "lg:col-span-5" : ""}>
+                <div className="flex items-center gap-3 mb-4">
+                  <Icon name={domain.icon} size={22} className="text-primary" />
+                  <h3 className="font-display text-headline-sm text-on-surface">{domain.title}</h3>
+                </div>
+                <p className={`text-body-sm text-secondary ${domain.wide ? "mb-6 lg:mb-0" : "mb-6"}`}>
+                  {domain.text}
+                </p>
+              </div>
+              <ul className={`flex flex-wrap gap-2 ${domain.wide ? "lg:col-span-7" : ""}`}>
+                {domain.items.map((item) => (
+                  <Chip key={item}>{item}</Chip>
+                ))}
+              </ul>
+            </div>
+            <div className="mt-6 pt-4 border-t border-outline-variant flex items-center justify-between gap-2 font-label-mono text-meta-caption text-secondary">
+              <span>{domain.footerLeft}</span>
+              <span className="text-primary font-semibold">{domain.footerRight}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
-
-export default Skills;

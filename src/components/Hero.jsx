@@ -1,182 +1,160 @@
-import React from "react";
-import { RiArrowRightUpLongLine } from "react-icons/ri";
-import { motion } from "framer-motion";
+import { hero, site } from "@/data/portfolio";
+import Icon from "./Icon";
 
-function Hero() {
-  const isMobile = window.innerWidth < 768;
+// `--i` drives the staggered entrance delay (see .hero-in in globals.css).
+const step = (i) => ({ "--i": i });
+
+export default function Hero() {
   return (
-    <div
-      id="home"
-      className="bg-gray-950 min-h-screen px-4 py-10 sm:px-6 md:px-10 lg:px-20 flex flex-col lg:flex-row items-center justify-between gap-12"
-    >
-      <motion.div
-        initial={{ opacity: 0, x: -100 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.3, delay: 0.2 }}
-        className="w-full lg:w-1/2"
+    <div className="relative overflow-hidden">
+      {/* Ambient background: dotted grid + two slowly drifting glows */}
+      <div className="dot-grid absolute inset-0 opacity-70" aria-hidden="true" />
+      <div
+        className="blob-a glow-a absolute -top-32 -left-32 w-[34rem] h-[34rem] rounded-full"
+        aria-hidden="true"
+      />
+      <div
+        className="blob-b glow-b absolute top-32 -right-32 w-[32rem] h-[32rem] rounded-full"
+        aria-hidden="true"
+      />
+
+      <section
+        id="hero"
+        aria-labelledby="hero-heading"
+        className="relative w-full max-w-7xl mx-auto px-6 lg:px-12 pt-12 md:pt-20 pb-16 md:pb-24"
       >
-        <div className="px-2 p-1 rounded-2xl flex bg-gray-900 w-fit items-center gap-3 border border-blue-950 hover:scale-105">
-          <span className="bg-green-400 rounded-full w-2.5 h-2.5 animate-pulse"></span>
-          <p className="text-gray-400 font-semibold text-xs sm:text-sm md:text-base">
-            Available for Work
-          </p>
-        </div>
-
-        <motion.h1
-          initial={{ opacity: 0, x: -100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-white font-extrabold text-6xl lg:text-7xl mt-5 leading-tight"
-        >
-          FULL STACK
-        </motion.h1>
-
-        <motion.h1
-          initial={{ opacity: 0, x: -100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-6xl lg:text-7xl font-extrabold bg-linear-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent leading-tight"
-        >
-          DEVELOPER
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, x: -100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="text-gray-400 mt-5 max-w-xl"
-        >
-          BCA 3rd Year <span className="font-bold">@ SIT Siliguri</span>.
-          Crafting production-grade web apps with{" "}
-          <span className="text-violet-500 font-bold">MERN</span>, PostgreSQL,
-          Redux & modern tooling.
-        </motion.p>
-
-        <motion.a
-          initial={{ opacity: 0, x: -100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          href="#projects"
-          className="px-5 sm:px-6 mt-8 py-3 sm:py-4 flex gap-2 items-center bg-linear-to-r from-blue-500 to-cyan-500 text-white font-bold rounded-md text-sm sm:text-base w-fit"
-        >
-          View Projects <RiArrowRightUpLongLine />
-        </motion.a>
-
-        <motion.div
-          initial={{ opacity: 0, x: -100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.65 }}
-          className="rounded-md bg-slate-900 flex flex-wrap border border-blue-950 text-white font-bold mt-10 w-full sm:w-fit"
-        >
-          <div className="flex-1 sm:flex-none text-center hover:bg-slate-800 border-r border-blue-950 px-6 py-4 sm:px-10 sm:py-5">
-            <h1 className="text-lg sm:text-xl">8.77</h1>
-            <p className="text-xs sm:text-sm">CGPA</p>
-          </div>
-          <div className="flex-1 sm:flex-none text-center hover:bg-slate-800 border-r border-blue-950 px-6 py-4 sm:px-10 sm:py-5">
-            <h1 className="text-lg sm:text-xl">3+</h1>
-            <p className="text-xs sm:text-sm">Projects</p>
-          </div>
-          <div className="flex-1 sm:flex-none text-center hover:bg-slate-800 px-6 py-4 sm:px-10 sm:py-5">
-            <h1 className="text-lg sm:text-xl">2</h1>
-            <p className="text-xs sm:text-sm">Awards</p>
-          </div>
-        </motion.div>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, x: isMobile ? -100 : 100 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        viewport= {{once:true}}
-        className="w-full lg:w-3/7 flex flex-col justify-center"
-      >
-        <div className="flex gap-5 mb-5 flex-wrap text-sm justify-center">
-          {[
-            "React",
-            "Node.js",
-            "Express.js",
-            "MongoDB",
-            "PostgreSQL",
-            "Redux",
-            "JavaScript",
-            "zustand",
-            "Socket.io",
-          ].map((tech, i) => (
-            <motion.div
-              initial={{ opacity: 0, y: isMobile? 100 : -100 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 * i + 0.4 }}
-              viewport= {{once:true}}
-              key={i}
-              className="px-2 p-1 border rounded-md text-gray-400 float hover:scale-105 "
-              style={{ animationDelay: `${i * 0.1}s` }}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          <div className="lg:col-span-7 flex flex-col justify-start">
+            <div
+              style={step(0)}
+              className="hero-in inline-flex items-center gap-2 self-start px-3 py-1.5 rounded-full bg-surface border border-outline-variant mb-6"
             >
-              {tech}
-            </motion.div>
-          ))}
-        </div>
-        <div className="w-full max-w-lg sm:max-w-xl md:max-w-3xl bg-[#0d1117] text-green-400 font-mono rounded-2xl shadow-2xl border border-gray-700 overflow-hidden">
-          <div className="flex flex-wrap items-center justify-between gap-2 px-4 py-2 sm:px-5 sm:py-3 bg-gray-800">
-            <div className="flex items-center gap-2 flex-wrap">
-              <span className="w-3 h-3 bg-red-500 rounded-full"></span>
-              <span className="w-3 h-3 bg-yellow-500 rounded-full"></span>
-              <span className="w-3 h-3 bg-green-500 rounded-full"></span>
-              <span className="ml-2 md:ml-4 text-gray-400 text-xs sm:text-sm">
-                ~/dev
+              <span className="relative flex h-2 w-2" aria-hidden="true">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+              </span>
+              <span className="font-label-mono text-meta-caption text-primary font-semibold">
+                {hero.availability}
               </span>
             </div>
 
-            <p className="hidden sm:block text-gray-400 text-xs md:text-sm">
-              portfolio_terminal.sh
+            <h1
+              id="hero-heading"
+              style={step(1)}
+              className="hero-in font-display text-display-xl-mobile md:text-display-xl text-on-surface mb-4"
+            >
+              {hero.headlineTop}
+              <br />
+              <span className="text-primary">{hero.headlineAccent}</span>
+            </h1>
+
+            <p
+              style={step(2)}
+              className="hero-in font-display text-headline-sm text-secondary max-w-xl mb-6"
+            >
+              {hero.tagline}
             </p>
 
-            <div className="flex items-center gap-2">
-              <div className="bg-green-400 rounded-full w-2.5 h-2.5 animate-pulse"></div>
-              <p className="text-gray-400 font-semibold text-xs sm:text-sm">
-                Live
-              </p>
+            <p style={step(3)} className="hero-in text-body-md text-on-surface-variant max-w-xl mb-8">
+              I&apos;m <strong className="text-on-surface font-semibold">{site.name}</strong>,{" "}
+              {hero.intro}
+            </p>
+
+            <div style={step(4)} className="hero-in flex flex-wrap items-center gap-4 mb-8">
+              <a
+                href="#projects"
+                className="group lift inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-on-primary font-label-mono text-label-mono hover:bg-primary-container"
+              >
+                <span>Explore My Work</span>
+                <Icon name="arrow" size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+              </a>
+              <a
+                href="#contact"
+                className="lift inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-surface border border-outline-variant text-on-surface font-label-mono text-label-mono hover:border-primary hover:text-primary"
+              >
+                <Icon name="mail" size={16} />
+                <span>Get in Touch</span>
+              </a>
+            </div>
+
+            <div
+              style={step(5)}
+              className="hero-in flex items-center gap-2.5 pt-4 border-t border-outline-variant max-w-lg"
+            >
+              <Icon name="verified" size={18} className="text-primary shrink-0" />
+              <p className="font-label-mono text-meta-caption text-secondary">{hero.footnote}</p>
             </div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: isMobile? -100 : 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            viewport= {{once:true}}
-            className="p-4 sm:p-6 space-y-3 sm:space-y-4 text-sm sm:text-base leading-relaxed word-break-words"
+          <div
+            style={step(3)}
+            className="hero-in lg:col-span-5 flex flex-col pt-2"
+            aria-label="Terminal summary"
           >
-            <p>
-              <span className="text-blue-400">~/dev $</span> whoami
-            </p>
-            <p>Rajdeep Majumdar — Full-Stack MERN Developer</p>
-
-            <p>
-              <span className="text-blue-400">~/dev $</span> cat skills.txt
-            </p>
-            <p>React.js · Express.js · MongoDB · Node.js · PostgreSQL</p>
-
-            <p>
-              <span className="text-blue-400">~/dev $</span> cat education.txt
-            </p>
-            <p>BCA 3rd Year · SIT Siliguri · CGPA 8.77</p>
-
-            <p>
-              <span className="text-blue-400">~/dev $</span> cat status.txt
-            </p>
-            <p className="flex items-center gap-2 flex-wrap">
-              <span className="text-green-400">●</span>
-              Open to internships & opportunities
-            </p>
-
-            <p className="flex items-center gap-2 text-blue-400">
-              ~/dev $
-              <span className="animate-pulse inline-block w-2 h-5 bg-green-500 ml-1"></span>
-            </p>
-          </motion.div>
+            <div className="w-full rounded-xl bg-inverse-surface border border-outline-variant overflow-hidden shadow-2xl shadow-primary/15">
+              <div className="px-4 py-3 border-b border-white/10 flex items-center justify-between">
+                <div className="flex items-center gap-2" aria-hidden="true">
+                  <span className="w-3 h-3 rounded-full bg-error inline-block" />
+                  <span className="w-3 h-3 rounded-full bg-primary-container inline-block" />
+                  <span className="w-3 h-3 rounded-full bg-outline inline-block" />
+                </div>
+                <div className="flex items-center gap-1.5 font-mono text-meta-caption text-secondary-fixed-dim">
+                  <Icon name="terminal" size={14} />
+                  <span>~/rajdeep · zsh</span>
+                </div>
+                <span className="font-mono text-meta-caption text-secondary-fixed-dim">
+                  x86_64
+                </span>
+              </div>
+              <div className="p-6 font-mono text-[0.8125rem] leading-6 space-y-4 text-inverse-on-surface selection:bg-primary selection:text-on-primary">
+                {hero.terminal.map((line, i) => (
+                  <div key={line.cmd} className="term-line" style={step(i)}>
+                    <span className="text-inverse-primary">guest@rajdeep-machine</span>
+                    <span className="text-secondary-fixed-dim">:~</span>$ {line.cmd}
+                    <p className={`mt-1 ${i === 0 ? "text-on-primary-container font-semibold" : "text-secondary-fixed-dim"}`}>
+                      {line.out}
+                    </p>
+                  </div>
+                ))}
+                <div className="term-line" style={step(hero.terminal.length)}>
+                  <span className="text-inverse-primary">guest@rajdeep-machine</span>
+                  <span className="text-secondary-fixed-dim">:~</span>$ cat status.txt
+                  <div className="flex items-center gap-2 mt-1 px-2.5 py-1 rounded bg-white/10 text-inverse-primary border border-inverse-primary/20 w-fit max-w-full">
+                    <span className="w-1.5 h-1.5 rounded-full bg-inverse-primary animate-pulse shrink-0" aria-hidden="true" />
+                    <span className="text-meta-caption font-semibold">{hero.terminalStatus}</span>
+                  </div>
+                </div>
+                <div className="term-line pt-2" style={step(hero.terminal.length + 1)} aria-hidden="true">
+                  <span className="text-inverse-primary">guest@rajdeep-machine</span>
+                  <span className="text-secondary-fixed-dim">:~</span>$ <span className="caret-blink">_</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </motion.div>
+
+        <ul className="w-full mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
+          {hero.metrics.map((metric) => (
+            <li
+              key={metric.label}
+              className="reveal lift p-6 rounded-xl bg-surface border border-outline-variant hover:border-primary flex flex-col justify-between"
+            >
+              <div className="flex items-center justify-between mb-2">
+                <span className="font-label-mono text-meta-caption text-secondary">{metric.label}</span>
+                <span className="bob w-9 h-9 rounded-lg bg-primary-fixed text-primary flex items-center justify-center">
+                  <Icon name={metric.icon} size={20} />
+                </span>
+              </div>
+              <div>
+                <div data-count={metric.value} className="font-display text-display-lg text-on-surface font-semibold">
+                  {metric.value}
+                </div>
+                <p className="text-body-sm text-secondary mt-1">{metric.caption}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
     </div>
   );
 }
-
-export default Hero;

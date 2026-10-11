@@ -1,149 +1,73 @@
-import React from "react";
-import { motion } from "framer-motion";
+import { contact, site } from "@/data/portfolio";
+import ContactForm from "./ContactForm";
+import Icon from "./Icon";
+import SectionLabel from "./SectionLabel";
 
-const CONTACT_LINKS = [
-  {
-    icon: "✉",
-    label: "Email",
-    sub: "Drop a message",
-    val: "amazumder781@gmail.com",
-    href: "mailto:amazumder781@gmail.com",
-  },
-  {
-    icon: "💻",
-    label: "GitHub",
-    sub: "See my code",
-    val: "github.com/Rajdeep-m7",
-    href: "https://github.com/Rajdeep-m7",
-  },
-  {
-    icon: "💼",
-    label: "LinkedIn",
-    sub: "Professional network",
-    val: "linkedin.com/in/rajdeep-majumdar-01736a28a",
-    href: "https://linkedin.com/in/rajdeep-majumdar-01736a28a",
-  },
-];
-
-function Contact() {
-  const isMobile = window.innerWidth < 768 ;
+export default function Contact() {
   return (
     <section
       id="contact"
-      className="bg-slate-950 text-white px-4 py-16 md:px-10 lg:px-20"
+      aria-labelledby="contact-heading"
+      className="w-full bg-surface-container-low border-t border-outline-variant py-16 md:py-24"
     >
-      <motion.h2
-        initial={{ opacity: 0, x: -100 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        viewport={{ once: true }}
-        className="text-4xl md:text-7xl font-extrabold leading-tight"
-      >
-        Let's build something <br />
-        <span className="bg-linear-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">
-          great together.
-        </span>
-      </motion.h2>
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="reveal">
+          <SectionLabel>07 — Reach Out</SectionLabel>
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <div className="reveal lg:col-span-5 flex flex-col">
+            <h2 id="contact-heading" className="font-display text-headline-md text-on-surface mb-4">
+              {contact.heading}
+            </h2>
+            <p className="text-body-md text-on-surface-variant mb-8">{contact.intro}</p>
+            <ul className="space-y-4">
+              {contact.links.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                    className="p-5 rounded-xl bg-surface border border-outline-variant hover:border-primary lift flex items-center justify-between gap-4 group"
+                  >
+                    <div className="flex items-center gap-4 min-w-0">
+                      <div className="w-10 h-10 shrink-0 rounded bg-surface-container flex items-center justify-center text-primary border border-outline-variant">
+                        <Icon name={link.icon} size={20} />
+                      </div>
+                      <div className="min-w-0">
+                        <span className="font-label-mono text-meta-caption text-secondary block">
+                          {link.label}
+                        </span>
+                        <span className="text-body-md font-semibold text-on-surface group-hover:text-primary transition-colors break-all">
+                          {link.value}
+                        </span>
+                      </div>
+                    </div>
+                    <Icon
+                      name={link.external ? "external" : "arrow"}
+                      size={20}
+                      className="text-secondary group-hover:text-primary transition-colors shrink-0"
+                    />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-      <motion.p
-        initial={{ opacity: 0, x: -100 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        viewport={{ once: true }}
-        className="text-gray-400 mt-4 max-w-xl"
-      >
-        Open to internships, freelance projects, and collaborations.
-      </motion.p>
-
-      <div className="flex flex-col gap-4 mt-10">
-        {CONTACT_LINKS.map((c, i) => (
-          <motion.a
-            initial={{ opacity: 0, x: -100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            whileHover={{
-              scale: 1.01,
-              transition: {
-                delay: 0.1,
-                type: "spring",
-                stiffness: 300,
-                damping: 20,
-              },
-            }}
-            transition={{
-              duration: 0.5,
-              delay: 0.1*i + 0.3,
-            }}
-            viewport={{ once: true }}
-            key={i}
-            href={c.href}
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center justify-between p-5 rounded-xl bg-slate-900 border border-gray-700 
-            hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/20 "
-          >
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-slate-800 text-xl">
-                {c.icon}
+          <div className="reveal lg:col-span-7">
+            <div className="p-6 lg:p-10 rounded-2xl bg-surface border border-outline-variant">
+              <div className="flex items-center justify-between gap-4 pb-6 border-b border-outline-variant mb-6">
+                <div>
+                  <h3 className="font-display text-headline-sm text-on-surface">Direct Dispatch</h3>
+                  <p className="text-body-sm text-secondary mt-1">Send a message straight to my inbox.</p>
+                </div>
+                <span className="font-label-mono text-meta-caption px-2.5 py-1 rounded bg-surface-container text-secondary font-semibold shrink-0">
+                  Sent to my inbox
+                </span>
               </div>
-
-              <div>
-                <p className="text-xs text-gray-500 uppercase">{c.sub}</p>
-                <h3 className="font-bold text-lg">{c.label}</h3>
-                <p className="text-sm text-gray-400">{c.val}</p>
-              </div>
+              <ContactForm email={site.email} intents={contact.intents} responseTime={contact.responseTime} />
             </div>
-
-            <span className="text-gray-400 text-lg">↗</span>
-          </motion.a>
-        ))}
+          </div>
+        </div>
       </div>
-
-      <motion.div
-        initial={{ opacity: 0, x: -100 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        whileHover={{
-          scale: 1.01,
-          transition: {
-            delay: 0.1,
-            type: "spring",
-            stiffness: 300,
-            damping: 20,
-          },
-        }}
-        transition={{
-          duration: 0.5,
-          delay: isMobile ? 0.2 : 0.5,
-        }}
-        className="mt-12 p-6 rounded-xl bg-slate-900 border border-gray-700 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
-      >
-        <div>
-          <h3 className="font-bold text-lg">Currently open to opportunities</h3>
-          <p className="text-sm text-gray-400">
-            <span className="text-green-500 animate-ping text-xl">●</span>{" "}
-            Available for internships · Freelance · Full-time
-          </p>
-        </div>
-
-        <div className="flex gap-3">
-          <a
-            href="mailto:amazumder781@gmail.com"
-            className="px-4 py-2 bg-linear-to-r from-blue-500 to-cyan-500 rounded-md text-sm font-semibold hover:opacity-90"
-          >
-            Email Me
-          </a>
-
-          <a
-            href="https://linkedin.com/in/rajdeep-majumdar-01736a28a"
-            target="_blank"
-            rel="noreferrer"
-            className="px-4 py-2 border border-gray-600 rounded-md text-sm hover:bg-slate-800"
-          >
-            LinkedIn
-          </a>
-        </div>
-      </motion.div>
     </section>
   );
 }
-
-export default Contact;

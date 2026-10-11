@@ -1,16 +1,39 @@
-# React + Vite
+# Rajdeep Majumdar — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Next.js (App Router) + Tailwind CSS v4 portfolio, statically prerendered for SEO.
 
-Currently, two official plugins are available:
+## Develop
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
+npm run start    # serve the production build
+npm run lint
+```
 
-## React Compiler
+## Edit content
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+All text, links and projects live in `src/data/portfolio.js`. Components and SEO
+metadata (title, Open Graph, JSON-LD) read from it.
 
-## Expanding the ESLint configuration
+## SEO
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Metadata, Open Graph / Twitter cards, canonical URL: `src/app/layout.js`
+- JSON-LD (`Person`, `WebSite`, projects `ItemList`): `src/app/layout.js`
+- `sitemap.xml`, `robots.txt`, web manifest, generated OG image, icon: `src/app/*`
+- Set the real domain before deploying: copy `.env.example` to `.env.local` and
+  set `NEXT_PUBLIC_SITE_URL` (otherwise canonical/sitemap URLs use `localhost:3000`).
+
+## Contact form
+
+The form posts to `src/app/api/contact/route.js`, which emails the message to you
+over SMTP (Nodemailer). Set `SMTP_USER` and `SMTP_PASS` in `.env.local` (see
+`.env.example`). For Gmail, `SMTP_PASS` must be an **App Password**, not your normal
+password. The route needs a host that runs server code (Vercel, Render, a VPS) and
+has a honeypot, input limits and a per-IP rate limit.
+
+## Design
+
+Tokens from `DESIGN.md` ("Warm Editorial Artifact") live in `src/app/globals.css`,
+with light and dark palettes switched by the `.dark` class (toggle in the header).
