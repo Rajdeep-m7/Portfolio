@@ -34,6 +34,7 @@ import {
   MdVerified,
   MdWork,
 } from "react-icons/md";
+import { FaWhatsapp } from "react-icons/fa";
 
 const icons = {
   add_cart: MdAddShoppingCart,
@@ -70,6 +71,7 @@ const icons = {
   terminal: MdTerminal,
   verified: MdVerified,
   work: MdWork,
+  whatsapp: FaWhatsapp,
   neurology: MdPsychology,
 };
 

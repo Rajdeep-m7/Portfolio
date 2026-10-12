@@ -33,17 +33,42 @@ export const site = {
   inbox: "amazumder781@gmail.com",
   github: "https://github.com/Rajdeep-m7",
   linkedin: "https://linkedin.com/in/rajdeep-majumdar-01736a28a",
+  // WhatsApp number in international format (India, +91) for the wa.me link.
+  whatsapp: "919832349168",
 };
 
+// Top-level pages. The home page still contains every section; these are the
+// dedicated pages that each get their own URL, title, description and canonical.
 export const navItems = [
-  { id: "hero", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "experience", label: "Experience" },
-  { id: "education", label: "Education" },
-  { id: "skills", label: "Skills" },
-  { id: "projects", label: "Projects" },
-  { id: "contact", label: "Contact" },
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/projects", label: "Projects" },
+  { href: "/contact", label: "Contact" },
 ];
+
+export const pages = {
+  about: {
+    path: "/about",
+    title: "About",
+    heading: "About Rajdeep Majumdar",
+    description:
+      "About Rajdeep Majumdar, a Full Stack Developer from Siliguri, India: background, experience, education and the MERN, React Native and Generative AI skills he works with.",
+  },
+  projects: {
+    path: "/projects",
+    title: "Projects",
+    heading: "Selected Projects",
+    description:
+      "Projects by Rajdeep Majumdar: full stack web applications built with React, Node.js, Express, MongoDB and PostgreSQL, with live demos and source code.",
+  },
+  contact: {
+    path: "/contact",
+    title: "Contact",
+    heading: "Get in Touch",
+    description:
+      "Contact Rajdeep Majumdar for internships, freelance projects, full-time roles and collaborations. Reach out by email, WhatsApp, LinkedIn or the contact form.",
+  },
+};
 
 export const hero = {
   availability: "Available for opportunities",
@@ -415,6 +440,13 @@ export const contact = {
       value: site.email,
       href: `mailto:${site.email}`,
       external: false,
+    },
+    {
+      icon: "whatsapp",
+      label: "WhatsApp",
+      value: "+91 98323 49168",
+      href: `https://wa.me/${site.whatsapp}`,
+      external: true,
     },
     {
       icon: "code",

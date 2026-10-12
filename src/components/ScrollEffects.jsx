@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 
 const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
 
@@ -26,7 +27,9 @@ function countUp(element) {
 // "js" class (set before first paint) is what enables the hidden start state.
 export default function ScrollEffects() {
   const barRef = useRef(null);
+  const pathname = usePathname();
 
+  // Re-run on every route change so the new page's .reveal / [data-count] nodes get observed.
   useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -78,7 +81,7 @@ export default function ScrollEffects() {
       window.removeEventListener("resize", onScroll);
       if (frame) cancelAnimationFrame(frame);
     };
-  }, []);
+  }, [pathname]);
 
   return <div ref={barRef} className="scroll-progress" aria-hidden="true" />;
 }

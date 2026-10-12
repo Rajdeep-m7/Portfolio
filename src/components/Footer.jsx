@@ -29,7 +29,7 @@ export default function Footer() {
           </a>
         </nav>
         <a
-          href="#hero"
+          href="#main"
           className="inline-flex items-center gap-1 font-label-mono text-label-mono text-secondary hover:text-primary transition-colors"
         >
           <Icon name="up" size={16} />

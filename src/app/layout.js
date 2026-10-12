@@ -1,6 +1,6 @@
 import { JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import { site, navItems, projects } from "@/data/portfolio";
+import { site, navItems } from "@/data/portfolio";
 import { siteUrl } from "@/lib/site";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -106,33 +106,6 @@ const jsonLd = {
       alternateName: site.alternateNames,
       inLanguage: "en",
       publisher: { "@id": `${siteUrl}/#person` },
-    },
-    {
-      "@type": "ProfilePage",
-      "@id": `${siteUrl}/#profile`,
-      url: siteUrl,
-      name: site.title,
-      inLanguage: "en",
-      isPartOf: { "@id": `${siteUrl}/#website` },
-      mainEntity: { "@id": `${siteUrl}/#person` },
-    },
-    {
-      "@type": "ItemList",
-      name: "Featured projects",
-      itemListElement: projects.featured.map((p, i) => ({
-        "@type": "ListItem",
-        position: i + 1,
-        item: {
-          "@type": "SoftwareApplication",
-          name: p.name,
-          description: p.description,
-          applicationCategory: "WebApplication",
-          operatingSystem: "Web",
-          url: p.live,
-          codeRepository: p.github,
-          author: { "@id": `${siteUrl}/#person` },
-        },
-      })),
     },
   ],
 };
