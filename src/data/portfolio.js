@@ -4,12 +4,18 @@
 export const site = {
   name: "Rajdeep Majumdar",
   initials: "RM",
+  // Alternate spellings people type into Google (used in structured data).
+  alternateNames: ["rajdeepmajumdar", "Rajdeep M", "Rajdeep Majumdar Siliguri"],
   role: "Full Stack Developer",
   title: "Rajdeep Majumdar · Full Stack Developer (MERN, React Native, Generative AI)",
   description:
     "Rajdeep Majumdar is a Full Stack Web Developer from Siliguri, India, building modern web applications with React, Node.js, MongoDB and PostgreSQL, exploring React Native and Generative AI. Open to internships, freelance and full-time roles.",
   keywords: [
     "Rajdeep Majumdar",
+    "rajdeepmajumdar",
+    "Rajdeep Majumdar portfolio",
+    "Rajdeep Majumdar developer",
+    "Rajdeep Majumdar Siliguri",
     "Full Stack Developer",
     "MERN Stack Developer",
     "React Developer",

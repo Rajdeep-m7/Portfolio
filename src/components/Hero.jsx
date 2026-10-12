@@ -43,6 +43,7 @@ export default function Hero() {
               style={step(1)}
               className="hero-in font-display text-display-xl-mobile md:text-display-xl text-on-surface mb-4"
             >
+              <span className="sr-only">{site.name} – </span>
               {hero.headlineTop}
               <br />
               <span className="text-primary">{hero.headlineAccent}</span>

@@ -22,23 +22,19 @@ export default function OpengraphImage() {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <div
-            style={{
-              width: 64,
-              height: 64,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              border: "2px solid #e2e8f0",
-              borderRadius: 12,
-              background: "#f1f5f9",
-              color: "#4f46e5",
-              fontSize: 28,
-              fontWeight: 700,
-            }}
-          >
-            {site.initials}
-          </div>
+          <svg width="64" height="64" viewBox="0 0 64 64">
+            <defs>
+              <linearGradient id="g" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stopColor="#6366f1" />
+                <stop offset="1" stopColor="#3730a3" />
+              </linearGradient>
+            </defs>
+            <rect width="64" height="64" rx="15" fill="url(#g)" />
+            <g fill="none" stroke="#fff" strokeWidth="5.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 47V17h9a7.5 7.5 0 0 1 0 15H12M20 32l8 15" />
+              <path d="M36 47V17l8.5 13L53 17v30" />
+            </g>
+          </svg>
           <div style={{ fontSize: 26, color: "#475569", letterSpacing: 2, textTransform: "uppercase" }}>
             Portfolio
           </div>

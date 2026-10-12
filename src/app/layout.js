@@ -26,7 +26,13 @@ export const metadata = {
   applicationName: `${site.name} Portfolio`,
   authors: [{ name: site.name, url: siteUrl }],
   creator: site.name,
+  publisher: site.name,
+  category: "technology",
   alternates: { canonical: "/" },
+  // Google Search Console HTML-tag verification (optional). Set NEXT_PUBLIC_GOOGLE_VERIFICATION.
+  verification: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION }
+    : undefined,
   openGraph: {
     type: "website",
     url: "/",
@@ -65,7 +71,9 @@ const jsonLd = {
       "@type": "Person",
       "@id": `${siteUrl}/#person`,
       name: site.name,
+      alternateName: site.alternateNames,
       url: siteUrl,
+      image: `${siteUrl}/icon.png`,
       jobTitle: site.role,
       description: site.description,
       email: `mailto:${site.email}`,
@@ -95,8 +103,18 @@ const jsonLd = {
       "@id": `${siteUrl}/#website`,
       url: siteUrl,
       name: `${site.name} · Portfolio`,
+      alternateName: site.alternateNames,
       inLanguage: "en",
       publisher: { "@id": `${siteUrl}/#person` },
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": `${siteUrl}/#profile`,
+      url: siteUrl,
+      name: site.title,
+      inLanguage: "en",
+      isPartOf: { "@id": `${siteUrl}/#website` },
+      mainEntity: { "@id": `${siteUrl}/#person` },
     },
     {
       "@type": "ItemList",
@@ -142,7 +160,7 @@ export default function RootLayout({ children }) {
         </a>
         <ScrollEffects />
         <CustomCursor />
-        <Header items={navItems} name={site.name} initials={site.initials} role={site.role} />
+        <Header items={navItems} name={site.name} role={site.role} />
         <main id="main">{children}</main>
         <Footer />
       </body>

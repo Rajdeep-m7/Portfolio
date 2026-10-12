@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Icon from "./Icon";
+import Logo from "./Logo";
 import ThemeToggle from "./ThemeToggle";
 
-export default function Header({ items, name, initials, role }) {
+export default function Header({ items, name, role }) {
   const [active, setActive] = useState("hero");
   const [open, setOpen] = useState(false);
 
@@ -38,9 +39,7 @@ export default function Header({ items, name, initials, role }) {
     <header className="sticky top-0 z-50 w-full bg-surface/85 backdrop-blur-md border-b border-outline-variant">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between gap-4">
         <a href="#hero" className="flex items-center gap-3 group shrink-0" aria-label={`${name} — home`}>
-          <div className="w-9 h-9 rounded-lg bg-surface-container border border-outline-variant flex items-center justify-center transition-colors group-hover:border-primary">
-            <span className="font-label-mono text-label-mono font-semibold text-primary">{initials}</span>
-          </div>
+          <Logo size={36} className="shrink-0 rounded-lg transition-transform group-hover:scale-105" />
           <div className="flex flex-col">
             <span className="font-display text-body-md font-semibold text-on-surface tracking-tight group-hover:text-primary transition-colors">
               {name}
